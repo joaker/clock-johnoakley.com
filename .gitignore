@@ -10,7 +10,9 @@
 
 # production
 /build
-/dist/moment/*
+/dist
+dist
+/dist/clock/*
 
 # sftp
 sftp-config.json
