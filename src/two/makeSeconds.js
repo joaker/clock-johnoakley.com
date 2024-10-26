@@ -1,8 +1,8 @@
 import { TWO_PI } from "two.js/src/utils/math";
 
-export const DEFAULT_SCALING = 4;
-export const DEFAULT_CENTER_SCALING = 10;
-export const DEFAULT_LINE_WIDTH_SCALING = 12;
+export const DEFAULT_SCALING = 16;
+export const DEFAULT_CENTER_SCALING = 42;
+export const DEFAULT_LINE_WIDTH_SCALING = 42;
 
 export const makeSeconds = (too, scaling = DEFAULT_SCALING, centerScaling = DEFAULT_CENTER_SCALING, linewidthScaling = DEFAULT_LINE_WIDTH_SCALING) => {
     const minDimension = Math.min(too.height, too.width);
