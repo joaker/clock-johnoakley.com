@@ -38,8 +38,8 @@ seconds = makeSeconds(two);
 center(seconds);  
 rotateSeconds = makeRotateSeconds(seconds);
 
-numbers = makeNumbers(two);
-center(numbers);
+// numbers = makeNumbers(two);
+// center(numbers);
 
 clock.add(hours);
 clock.add(minutes);
@@ -50,7 +50,7 @@ two
     if(!!hours) center(hours);
     if(!!minutes) center(minutes);
     if(!!seconds) center(seconds);
-    if(!!numbers) center(numbers);
+    // if(!!numbers) center(numbers);
   })
   .bind('update', () => {
     if(!!hours) rotateHours();  
