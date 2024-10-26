@@ -1,9 +1,10 @@
 import React from 'react';
 import Two from 'two.js';
 import { TWO_PI } from 'two.js/src/utils/math';
-import { makeRotateSeconds, makeSeconds } from './makeSeconds';
+import { makeSeconds, makeRotateSeconds } from './makeSeconds';
 import { makeCenter } from './utils';
 import { makeMinutes, makeRotateMinutes } from './makeMinutes';
+import { makeHours, makeRotateHours } from './makeHours.js';
 
 const elem = document.body;
 const two = new Two({
@@ -23,6 +24,10 @@ const center = makeCenter(two);
 
 const clock = two.makeGroup();
 
+hours = makeHours(two);
+center(hours);
+rotateHours = makeRotateHours(hours);
+
 minutes = makeMinutes(two);
 center(minutes);  
 rotateMinutes = makeRotateMinutes(minutes);
@@ -31,6 +36,7 @@ seconds = makeSeconds(two);
 center(seconds);  
 rotateSeconds = makeRotateSeconds(seconds);
 
+clock.add(hours);
 clock.add(minutes);
 clock.add(seconds);
 
@@ -41,8 +47,9 @@ two
     if(!!seconds) center(seconds);
   })
   .bind('update', () => {
-    if(!!seconds) rotateSeconds();  
+    if(!!hours) rotateHours();  
     if(!!minutes) rotateMinutes();  
+    if(!!seconds) rotateSeconds();  
   })
   .play();
 
