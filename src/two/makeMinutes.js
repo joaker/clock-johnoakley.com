@@ -1,6 +1,6 @@
 import { TWO_PI } from "two.js/src/utils/math";
 
-export const DEFAULT_SCALING = 8;
+export const DEFAULT_SCALING = 7;
 export const DEFAULT_LINE_WIDTH_SCALING = 32;
 export const UNITS_PER_ROTATION = 60;
 

@@ -1,7 +1,7 @@
 import { TWO_PI } from "two.js/src/utils/math";
 
 export const DEFAULT_SCALING = 4;
-export const DEFAULT_LINE_WIDTH_SCALING = 16;
+export const DEFAULT_LINE_WIDTH_SCALING = 25;
 export const UNITS_PER_ROTATION = 12;
 
 export const makeHours = (too, scaling = DEFAULT_SCALING, linewidthScaling = DEFAULT_LINE_WIDTH_SCALING) => {
