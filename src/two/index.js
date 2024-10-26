@@ -5,6 +5,7 @@ import { makeSeconds, makeRotateSeconds } from './makeSeconds';
 import { makeCenter } from './utils';
 import { makeMinutes, makeRotateMinutes } from './makeMinutes';
 import { makeHours, makeRotateHours } from './makeHours.js';
+import { makeNumbers } from './makeNumbers.js';
 
 const elem = document.body;
 const two = new Two({
@@ -15,6 +16,7 @@ const two = new Two({
 let hours = null;
 let minutes = null;
 let seconds = null;
+let numbers = null;
 
 let rotateHours = null;
 let rotateMinutes = null;
@@ -35,6 +37,9 @@ rotateMinutes = makeRotateMinutes(minutes);
 seconds = makeSeconds(two);
 center(seconds);  
 rotateSeconds = makeRotateSeconds(seconds);
+
+numbers = makeNumbers(two);
+center(numbers);
 
 clock.add(hours);
 clock.add(minutes);
