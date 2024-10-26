@@ -50,6 +50,7 @@ two
     if(!!hours) center(hours);
     if(!!minutes) center(minutes);
     if(!!seconds) center(seconds);
+    if(!!numbers) center(numbers);
   })
   .bind('update', () => {
     if(!!hours) rotateHours();  
