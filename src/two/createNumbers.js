@@ -10,7 +10,7 @@ export const baseStyles = {
     opacity: 0.33
 };
 
-export const makeNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => {
+export const createNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => {
     const minDimension = Math.min(too.height, too.width);
     const radius = minDimension / scaling;
 

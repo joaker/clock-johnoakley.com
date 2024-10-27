@@ -1,11 +1,9 @@
 import React from 'react';
 import Two from 'two.js';
 import { TWO_PI } from 'two.js/src/utils/math';
-import { makeSeconds, makeRotateSeconds } from './makeSeconds';
-import { makeCenter } from './utils';
-import { makeMinutes, makeRotateMinutes } from './makeMinutes';
-import { makeHours, makeRotateHours } from './makeHours.js';
-import { makeNumbers } from './makeNumbers.js';
+import { createCenter, createHand, getHoursPercent, getMinutesPercent, getSecondsPercent, makeCenter, makeRotate } from './utils';
+import { createNumbers } from './createNumbers.js';
+import { DEFAULT_LINE_WIDTH_SCALING_HOUR, DEFAULT_LINE_WIDTH_SCALING_MINUTE, DEFAULT_LINE_WIDTH_SCALING_SECONDS, DEFAULT_SCALING_HOUR, DEFAULT_SCALING_MINUTE, DEFAULT_SCALING_SECOND, HOURS_PER_ROTATION, MINUTES_PER_ROTATION, SECONDS_PER_ROTATION } from './constants.js';
 
 const elem = document.body;
 const two = new Two({
@@ -16,41 +14,40 @@ const two = new Two({
 let hours = null;
 let minutes = null;
 let seconds = null;
+let center = null;
 let numbers = null;
 
 let rotateHours = null;
 let rotateMinutes = null;
 let rotateSeconds = null;
 
-const center = makeCenter(two);
+const translateToCenter = makeCenter(two);
+
 
 const clock = two.makeGroup();
 
-hours = makeHours(two);
-center(hours);
-rotateHours = makeRotateHours(hours);
-
-minutes = makeMinutes(two);
-center(minutes);  
-rotateMinutes = makeRotateMinutes(minutes);
-
-seconds = makeSeconds(two);
-center(seconds);  
-rotateSeconds = makeRotateSeconds(seconds);
-
-// numbers = makeNumbers(two);
-// center(numbers);
+hours = createHand(two, DEFAULT_SCALING_HOUR, DEFAULT_LINE_WIDTH_SCALING_HOUR);
+minutes = createHand(two, DEFAULT_SCALING_MINUTE, DEFAULT_LINE_WIDTH_SCALING_MINUTE);
+seconds = createHand(two, DEFAULT_SCALING_SECOND, DEFAULT_LINE_WIDTH_SCALING_SECONDS)
+center = createCenter(two);
+numbers = createNumbers(two);
 
 clock.add(hours);
 clock.add(minutes);
 clock.add(seconds);
+clock.add(center);
+clock.add(numbers);
+
+rotateHours = makeRotate(hours, getHoursPercent);
+rotateMinutes = makeRotate(minutes, getMinutesPercent);
+rotateSeconds = makeRotate(seconds, getSecondsPercent);
+
+
+translateToCenter(clock);
 
 two
   .bind('resize', () => {
-    if(!!hours) center(hours);
-    if(!!minutes) center(minutes);
-    if(!!seconds) center(seconds);
-    // if(!!numbers) center(numbers);
+    translateToCenter(clock);
   })
   .bind('update', () => {
     if(!!hours) rotateHours();  
