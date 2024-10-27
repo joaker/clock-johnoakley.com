@@ -7,8 +7,12 @@ export const baseStyles = {
     weight: 'bold',
     family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     fill: 'white',
-    opacity: 0.33
+    stroke: 'black',
+    linewidth: 2,
+    // opacity: 0.33
 };
+
+const numerals = ['I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
 export const createNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => {
     const minDimension = Math.min(too.height, too.width);
@@ -22,7 +26,9 @@ export const createNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => 
 
         const x = radius * Math.sin(i / 12 * TWO_PI);
         const y = - radius * Math.cos(i / 12 * TWO_PI);
-        const number = too.makeText(i === 0 ? 12 : i, x, y, styles);
+        // const value = i === 0 ? 12 : i;
+        const value = numerals[i];
+        const number = too.makeText(value, x, y, styles);
 
         number.position.set(x, y);
         numbers.add(number);
