@@ -1,18 +1,22 @@
 import { TWO_PI } from "two.js/src/utils/math";
 
 export const DEFAULT_SCALING = 2.8;
+const haloColor = '#66b3ff';
+
 
 export const baseStyles = {
     // size: radius * 0.33,
     weight: 'bold',
     family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    // fill: haloColor,
+    opacity: 1,
     fill: 'white',
     stroke: 'black',
-    linewidth: 2,
+    // linewidth: 2,
     // opacity: 0.33
 };
 
-const numerals = ['I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+const numerals = ['XII', 'I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
 
 export const createNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => {
     const minDimension = Math.min(too.height, too.width);
