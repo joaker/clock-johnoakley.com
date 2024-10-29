@@ -16,3 +16,11 @@ export const HOURS_PER_ROTATION = 12;
 export const MINUTES_PER_ROTATION = 60;
 export const SECONDS_PER_ROTATION = 60;
 export const MILLIS_PER_ROTATION = 1000;
+
+export const DEFAULT_NUMBERS_LINEWIDTH = 1.5;
+
+export const DEFAULT_NUMBERS_FILL = '#fff';
+export const DEFAULT_NUMBERS_STROKE = '#000';
+
+export const ACTIVE_NUMBERS_FILL = '#66b3ff';
+export const ACTIVE_NUMBERS_STROKE = '#fff';

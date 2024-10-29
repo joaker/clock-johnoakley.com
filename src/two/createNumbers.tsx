@@ -1,4 +1,7 @@
+import Two from "two.js";
+import { Group } from "two.js/src/group";
 import { TWO_PI } from "two.js/src/utils/math";
+import { DEFAULT_NUMBERS_FILL, DEFAULT_NUMBERS_LINEWIDTH, DEFAULT_NUMBERS_STROKE } from "./constants";
 
 export const DEFAULT_SCALING = 2.8;
 const haloColor = '#66b3ff';
@@ -10,15 +13,15 @@ export const baseStyles = {
     family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     // fill: haloColor,
     opacity: 1,
-    fill: 'white',
-    stroke: 'black',
-    // linewidth: 2,
+    fill: DEFAULT_NUMBERS_FILL,
+    stroke: DEFAULT_NUMBERS_STROKE,
+    linewidth: DEFAULT_NUMBERS_LINEWIDTH,
     // opacity: 0.33
 };
 
 const numerals = ['XII', 'I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
 
-export const createNumbers = (too, scaling = DEFAULT_SCALING, styles = null) => {
+export const createNumbers = (too: Two, scaling = DEFAULT_SCALING, styles: any = null): Group => {
     const minDimension = Math.min(too.height, too.width);
     const radius = minDimension / scaling;
 

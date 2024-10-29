@@ -1,12 +1,16 @@
 import { TWO_PI } from "two.js/src/utils/math";
 import { DEFAULT_CENTER_SCALING, HOURS_PER_ROTATION, MILLIS_PER_ROTATION, MINUTES_PER_ROTATION, SECONDS_PER_ROTATION } from "./constants";
+import { Group } from "two.js/src/group";
+import Two from "two.js";
+import { Shape } from "two.js/src/shape";
+import { Circle } from "two.js/src/shapes/circle";
 
-export const makeCenter = (too) => (thing) => {
+export const makeCenter = (too: Two) => (thing: Shape) => {
     thing.translation.x = too.width / 2;
     thing.translation.y = too.height / 2;
 }
 
-export const createHand = (too, scaling, linewidthScaling) => {
+export const createHand = (too: Two, scaling: number, linewidthScaling: number): Group => {
     const minDimension = Math.min(too.height, too.width);
     const radius = minDimension / scaling;
     const lineWidth = minDimension / linewidthScaling;
@@ -29,7 +33,7 @@ export const createHand = (too, scaling, linewidthScaling) => {
     return ring;
 }
 
-export const createCenter = (too) => {
+export const createCenter = (too: Two): Circle => {
     const minDimension = Math.min(too.height, too.width);
     const radius = minDimension / DEFAULT_CENTER_SCALING;
 
@@ -41,7 +45,7 @@ export const createCenter = (too) => {
 
 }
 
-export const makeRotate = (hand, getRotationPercent) => (date = new Date()) => {
+export const makeRotate = (hand: Shape, getRotationPercent: (date: Date) => number) => (date = new Date()) => {
     const percent = getRotationPercent(date);
 
     const rotation = percent * TWO_PI;
