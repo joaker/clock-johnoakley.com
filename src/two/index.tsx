@@ -1,7 +1,7 @@
 import React from 'react';
 import Two from 'two.js';
 import { TWO_PI } from 'two.js/src/utils/math';
-import { createCenter, createHand, getHoursPercent, getMinutesPercent, getSecondsPercent, makeCenter, makeRotate } from './utils';
+import { createCenter, createHand, getHoursPercent, getMinutesPercent, getSecondsPercent, makeCenter, makeRotate, startResizeInterval } from './utils';
 import { createNumbers } from './createNumbers';
 import { ACTIVE_NUMBERS_FILL, ACTIVE_NUMBERS_STROKE, DEFAULT_LINE_WIDTH_SCALING_HOUR, DEFAULT_LINE_WIDTH_SCALING_MINUTE, DEFAULT_LINE_WIDTH_SCALING_SECONDS, DEFAULT_NUMBERS_FILL, DEFAULT_NUMBERS_STROKE, DEFAULT_SCALING_HOUR, DEFAULT_SCALING_MINUTE, DEFAULT_SCALING_SECOND, HOURS_PER_ROTATION, MINUTES_PER_ROTATION, SECONDS_PER_ROTATION } from './constants.js';
 import { Group } from 'two.js/src/group';
@@ -61,6 +61,8 @@ two
     if (!!seconds) rotateSeconds();
   })
   .play();
+
+startResizeInterval();
 
 function registerHandlers() {
   // two.renderer.domElement.style.cursor = 'pointer';

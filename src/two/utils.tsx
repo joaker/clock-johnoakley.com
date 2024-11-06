@@ -1,5 +1,5 @@
 import { TWO_PI } from "two.js/src/utils/math";
-import { DEFAULT_CENTER_SCALING, HOURS_PER_ROTATION, MILLIS_PER_ROTATION, MINUTES_PER_ROTATION, SECONDS_PER_ROTATION } from "./constants";
+import { DEFAULT_CENTER_SCALING, HOURS_PER_ROTATION, MILLIS_PER_ROTATION, MINUTES_PER_ROTATION, RESIZE_INTERVAL_MILLISECONDS, RESIZE_MAX_COUNT, SECONDS_PER_ROTATION } from "./constants";
 import { Group } from "two.js/src/group";
 import Two from "two.js";
 import { Shape } from "two.js/src/shape";
@@ -86,4 +86,18 @@ export const getSecondsPercent = (date = new Date()) => {
     const seconds = baseSeconds + millisFraction;
 
     return seconds / SECONDS_PER_ROTATION;
+}
+
+let interval: NodeJS.Timeout | null = null;
+let resizeCount = 0;
+
+export const triggerResize = () => {
+    window.dispatchEvent(new Event('resize'));
+    if(++resizeCount >= RESIZE_MAX_COUNT) {
+        clearInterval(interval as NodeJS.Timeout)
+    }
+}
+
+export const startResizeInterval = () => {
+    interval = setInterval(triggerResize, RESIZE_INTERVAL_MILLISECONDS);
 }

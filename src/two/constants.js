@@ -24,3 +24,6 @@ export const DEFAULT_NUMBERS_STROKE = '#000';
 
 export const ACTIVE_NUMBERS_FILL = '#66b3ff';
 export const ACTIVE_NUMBERS_STROKE = '#fff';
+
+export const RESIZE_INTERVAL_MILLISECONDS = 200;
+export const RESIZE_MAX_COUNT = 10;
