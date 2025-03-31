@@ -65,9 +65,10 @@ two
 startResizeInterval();
 
 function registerHandlers() {
-  // two.renderer.domElement.style.cursor = 'pointer';
+
   if (!!center) {
-    const centerGroup = center as Circle;
+    // Add event listeners to the center circle to change the cursor on hover
+    // and to toggle the numbers' stroke and fill on click
     (center._renderer as any).elem.addEventListener('mouseover', enterCenter);
     (center._renderer as any).elem.addEventListener('mouseout', exitCenter);
     (center._renderer as any).elem.addEventListener('click', clickCenter);
