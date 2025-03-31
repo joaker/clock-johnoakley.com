@@ -8,15 +8,12 @@ const haloColor = '#66b3ff';
 
 
 export const baseStyles = {
-    // size: radius * 0.33,
     weight: 'bold',
     family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-    // fill: haloColor,
     opacity: 1,
     fill: DEFAULT_NUMBERS_FILL,
     stroke: DEFAULT_NUMBERS_STROKE,
     linewidth: DEFAULT_NUMBERS_LINEWIDTH,
-    // opacity: 0.33
 };
 
 const numerals = ['XII', 'I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
@@ -33,7 +30,6 @@ export const createNumbers = (too: Two, scaling = DEFAULT_SCALING, styles: any =
 
         const x = radius * Math.sin(i / 12 * TWO_PI);
         const y = - radius * Math.cos(i / 12 * TWO_PI);
-        // const value = i === 0 ? 12 : i;
         const value = numerals[i];
         const number = too.makeText(value, x, y, styles);
 
